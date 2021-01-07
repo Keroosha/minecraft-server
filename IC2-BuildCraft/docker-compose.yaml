@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  main:
+    build:
+      dockerfile: Server.Dockerfile
+      context: .
+    volumes:
+      - ./minecraft:/opt/minecraft-server
+
+  lobby:
+    build:
+      dockerfile: Server.Dockerfile
+      context: .
+    volumes:
+      - ./lobby:/opt/minecraft-server
+
+  velocity:
+    build:
+      dockerfile: Velocity.Dockerfile
+      context: .
+    ports:
+      - 25577:25577
+    volumes:
+      - ./velocity:/opt/velocity
